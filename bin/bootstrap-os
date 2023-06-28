@@ -36,7 +36,6 @@ bootstrap() {
         feh \
         ffmpeg \
         git \
-        guvcview \
         htop \
         jackd2 \
         mesa-utils \
@@ -49,7 +48,6 @@ bootstrap() {
         picom \
         qjackctl \
         qsynth \
-        q4vl2 \
         ranger \
         scrot \
         vmpk \
@@ -74,14 +72,14 @@ bootstrap() {
     if [[ "$*" == *--confirm-rsync-overwrite* ]]; then
         INSTALL_KIOSK_SCRIPTS_ARGS+=( "--confirm-rsync-overwrite" )
     fi
-    curl -L https://raw.githubusercontent.com/IMAGINARY/future-mobility-scripts/main/bin/install/install-kiosk-scripts | bash -s -- "${INSTALL_KIOSK_SCRIPTS_ARGS[@]}"
+    curl -L https://raw.githubusercontent.com/IMAGINARY/future-democracy-scripts/main/bin/install/install-kiosk-scripts | bash -s -- "${INSTALL_KIOSK_SCRIPTS_ARGS[@]}"
     source "/opt/kiosk-scripts/rootfs/etc/profile.d/kiosk-bin-path.sh"
 
     # Install dependencies common to many exhibits
     install-kiosk-browser
 
     # Install the exhibits
-    install-future-mobility
+    install-future-democracy
 
     # Run the kiosk-config script
     ASK_TO_REBOOT=1 /opt/kiosk-scripts/bin/kiosk-config

@@ -23,7 +23,7 @@ fi
 # Restore previous environment such that it takes precendence over the config files
 eval "$EXPORTED_ENV"
 
-REPO_DEFAULT="https://github.com/IMAGINARY/future-mobility-scripts.git"
+REPO_DEFAULT="https://github.com/IMAGINARY/future-democracy-scripts.git"
 REPO="${KIOSK_SCRIPTS_REPO:-$REPO_DEFAULT}"
 if [[ -z "${KIOSK_SCRIPTS_REPO}" ]]; then
   echo "KIOSK_SCRIPTS_REPO environment variable not set. Using default value: ${REPO}"

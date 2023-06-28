@@ -4,7 +4,7 @@
 # Using multi-line variables will break various scripts that modify this file.
 
 # URL of the git repository for installing kiosk-scripts
-KIOSK_SCRIPTS_REPO="https://github.com/IMAGINARY/future-mobility-scripts.git"
+KIOSK_SCRIPTS_REPO="https://github.com/IMAGINARY/future-democracy-scripts.git"
 
 # Branch or commit SHA from the KIOSK_SCRIPTS_REPO to use for installing
 KIOSK_SCRIPTS_COMMITISH="main"

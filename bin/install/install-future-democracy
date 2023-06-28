@@ -3,12 +3,12 @@
 set -e
 
 install-kiosk-browser
-install-future-mobility-nodejs
+install-future-democracy-nodejs
 
-COMMITISH="v0.21.2"
-REPO_URL="https://github.com/IMAGINARY/future-mobility.git"
-INSTALL_DIR="/opt/future-mobility/future-mobility"
-NODEJS_BIN_DIR="/opt/future-mobility/nodejs/bin"
+COMMITISH="4858d8f"
+REPO_URL="https://github.com/IMAGINARY/future-democracy.git"
+INSTALL_DIR="/opt/future-democracy/future-democracy"
+NODEJS_BIN_DIR="/opt/future-democracy/nodejs/bin"
 export PATH="$NODEJS_BIN_DIR:$PATH"
 
 "${BASH_SOURCE%/*}/../internal/install-source-from-git" "$COMMITISH" "$REPO_URL" "$INSTALL_DIR"
