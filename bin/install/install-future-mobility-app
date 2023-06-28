@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+install-kiosk-browser
+install-future-mobility-nodejs
+
+COMMITISH="v0.21.2"
+REPO_URL="https://github.com/IMAGINARY/future-mobility.git"
+INSTALL_DIR="/opt/future-mobility/future-mobility"
+NODEJS_BIN_DIR="/opt/future-mobility/nodejs/bin"
+export PATH="$NODEJS_BIN_DIR:$PATH"
+
+"${BASH_SOURCE%/*}/../internal/install-source-from-git" "$COMMITISH" "$REPO_URL" "$INSTALL_DIR"
+
+cd "$INSTALL_DIR"
+npm install --omit dev
+
+cd "$INSTALL_DIR/server"
+npm install --omit dev

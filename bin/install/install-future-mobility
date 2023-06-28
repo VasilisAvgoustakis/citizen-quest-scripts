@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+install-tag-grid-scanner
+install-future-mobility-app
+install-future-mobility-spy
+
+# Add udev rules for cameras.
+# The udev attributres can be queried using:
+# $ udevadm info --attribute-walk /dev/the-device-node
+# The udev device names, symlinks, properties can be queried using:
+# $ udevadm info -q all [device_path_or_name]
+# The udev rules should preferably match the (USB) port via
+# SYMLINK=".../path-by/..." or ENV{ID_PATH}="..."
+#
+# The v4l2 settings can be queried using:
+# $ v4l2-ctl --all -d /dev/the-device-node
+UDEV_RULES_FILES=/etc/udev/rules.d/90-future-mobility.rules
+if [ ! -f "$UDEV_RULES_FILES" ]; then
+  cat >"${UDEV_RULES_FILES}" <<EOL
+ATTR{index}=="0", SUBSYSTEM=="video4linux", KERNELS=="1-1:1.0", SUBSYSTEMS=="usb", SYMLINK+="video-top", RUN+="/usr/local/bin/v4l2-ctl-set-ctrls video-top"
+ATTR{index}=="0", SUBSYSTEM=="video4linux", KERNELS=="1-2:1.0", SUBSYSTEMS=="usb", SYMLINK+="video-bottom", RUN+="/usr/local/bin/v4l2-ctl-set-ctrls video-bottom"
+EOL
+  udevadm trigger
+else
+  echo "${UDEV_RULES_FILES} exists. This skript will not modify it. Please check ${BASH_SOURCE[*]} for the default contents." 
+fi

@@ -1,0 +1,40 @@
+#!/bin/bash
+# This wrapper script is supposed to be visible in ps -a resp. ps -u `id -u` to make
+# it easy to kill it (by a script or manually)
+
+PIDS=""
+function finish {
+    EXIT_CODE=$?
+    kill $PIDS >/dev/null 2>&1
+    exit $EXIT_CODE
+}
+trap finish SIGINT SIGTERM EXIT
+
+
+CONFIG_TEMPLATE_FILE="/opt/future-mobility/tag-grid-scanner/config.example.yaml"
+CONFIG_FILE_DEFAULT="${HOME}/.config/future-mobility/scanner-config.yml"
+CONFIG_FILE="${FUTURE_MOBILITY_SCANNER_CONFIG_FILE:-$CONFIG_FILE_DEFAULT}"
+
+if [[ -z "${FUTURE_MOBILITY_SCANNER_CONFIG_FILE}" ]]; then
+  echo "FUTURE_MOBILITY_SCANNER_CONFIG_FILE environment variable not set. Using default value: ${CONFIG_FILE}"
+else
+  echo "Using FUTURE_MOBILITY_SCANNER_CONFIG_FILE environment variable. Value: ${CONFIG_FILE}"
+fi
+
+
+# Create a settings file if it doesn't exist already
+mkdir -p "$(dirname "${CONFIG_DIR}")" && \
+  cp -n "${CONFIG_TEMPLATE_FILE}" "${CONFIG_FILE}"
+
+# Launch the tag-grid-scanner with the right config file
+tag-grid-scanner scan \
+  -c "${CONFIG_FILE}" \
+  --rate-limit 6 \
+  "$@" \
+  &
+PID_SCANNER="$!"
+PIDS="$PIDS $PID_SCANNER"
+
+# Wait for the scanner to finish or until the signal trap is triggered
+wait $PID_SCANNER
+exit $?
