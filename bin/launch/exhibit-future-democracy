@@ -1,0 +1,30 @@
+#!/bin/bash
+# This wrapper script is supposed to be visible in ps -a resp. ps -u `id -u` to make
+# it easy to kill it (by a script or manually)
+
+PIDS=""
+function finish {
+    EXIT_CODE=$?
+    kill $PIDS >/dev/null 2>&1
+    exit $EXIT_CODE
+}
+trap finish SIGINT SIGTERM EXIT
+
+
+exhibit-future-democracy-api-server &
+PID_API_SERVER=$!
+PIDS="$PIDS $PID_API_SERVER"
+
+exhibit-future-democracy-http-server &
+PID_HTTP_SERVER=$!
+PIDS="$PIDS $PID_HTTP_SERVER"
+
+sleep 1
+
+exhibit-future-democracy-city &
+PID_CITY=$!
+PIDS="$PIDS $PID_CITY"
+
+# Wait for the exhibit to finish or until the signal trap is triggered
+wait -n $PIDS
+exit $?
