@@ -15,13 +15,21 @@ SERVER_INSTALL_DIR="/opt/future-democracy/future-democracy/server"
 CONFIG_DIR="${HOME}/.config/future-democracy"
 NODEJS_PATH="/opt/future-democracy/nodejs/bin"
 
+# Options
+OPTS=()
+# Configure sentry.io data source name (dsn)
+if [ ! -z "${FUTURE_DEMOCRACY_API_SERVER_SENTRY_DSN}" ]
+then
+  OPTS=(--sentry-dsn "${FUTURE_DEMOCRACY_API_SERVER_SENTRY_DSN}")
+fi
+
 # Create a settings file if it doesn't exist already
 mkdir -p "${CONFIG_DIR}" && \
   cp -n "${INSTALL_DIR}/settings.yml" "${CONFIG_DIR}/app-settings.yml"
 
 # Launch the future-mobility API server
 cd "${SERVER_INSTALL_DIR}" || exit 1
-PATH="$NODEJS_PATH:$PATH" node main.js -s "${CONFIG_DIR}/app-settings.yml" &
+PATH="$NODEJS_PATH:$PATH" node main.js -s "${CONFIG_DIR}/app-settings.yml" "${OPTS[@]}" &
 PID_SERVER="$!"
 PIDS="$PIDS $PID_SERVER"
 
