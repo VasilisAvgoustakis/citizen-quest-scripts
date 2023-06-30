@@ -1,6 +1,6 @@
-# Future-Mobility scripts
+# Future-Democracy scripts
 
-These scripts are used to setup a station running the future-mobility exhibit.
+These scripts are used to setup a station running the future-democracy exhibit.
 
 # Installation
 
@@ -23,7 +23,7 @@ The script `bin/bootstrap-os` will install required packages, the scripts in thi
 well as most of the exhibits:
 
 ```
-wget https://raw.githubusercontent.com/IMAGINARY/future-mobility-scripts/main/bin/bootstrap-os
+wget https://raw.githubusercontent.com/IMAGINARY/future-democracy-scripts/main/bin/bootstrap-os
 chmod +x bootstrap-os
 sudo ./bootstrap-os
 ```
