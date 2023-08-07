@@ -5,7 +5,7 @@ set -e
 install-kiosk-browser
 install-future-democracy-nodejs
 
-COMMITISH="4858d8f"
+COMMITISH="070be18f2d64b6396ca186d9ef54f915ae7782a1"
 REPO_URL="https://github.com/IMAGINARY/future-democracy.git"
 INSTALL_DIR="/opt/future-democracy/future-democracy"
 NODEJS_BIN_DIR="/opt/future-democracy/nodejs/bin"
