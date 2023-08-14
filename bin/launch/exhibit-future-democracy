@@ -21,7 +21,7 @@ PIDS="$PIDS $PID_HTTP_SERVER"
 
 sleep 1
 
-exhibit-future-democracy-city &
+exhibit-future-democracy-map &
 PID_CITY=$!
 PIDS="$PIDS $PID_CITY"
 
