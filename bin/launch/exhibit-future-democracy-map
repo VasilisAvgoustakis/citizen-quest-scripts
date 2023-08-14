@@ -19,7 +19,7 @@ kiosk-browser $KIOSK_OPTS \
     --hide-scrollbars \
     --reload-unresponsive 60 \
     --serve /opt/future-democracy/future-democracy \
-    index.html &
+    map.html &
 PID_UI=$!
 PIDS="$PIDS $PID_UI"
 
