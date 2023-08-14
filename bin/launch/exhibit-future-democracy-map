@@ -10,6 +10,14 @@ function finish {
 }
 trap finish SIGINT SIGTERM EXIT
 
+# Options
+QUERY_STRING=""
+# Configure sentry.io data source name (dsn)
+if [ ! -z "${FUTURE_DEMOCRACY_MAP_SENTRY_DSN}" ]
+then
+  QUERY_STRING="${QUERY_STRING}&sentry-dsn=${FUTURE_DEMOCRACY_MAP_SENTRY_DSN}"
+fi
+
 # Launch the exhibit in the background
 kiosk-browser $KIOSK_OPTS \
     --app-name-suffix=future-democracy-city \
@@ -19,7 +27,7 @@ kiosk-browser $KIOSK_OPTS \
     --hide-scrollbars \
     --reload-unresponsive 60 \
     --serve /opt/future-democracy/future-democracy \
-    map.html &
+    "map.html?${QUERY_STRING}" &
 PID_UI=$!
 PIDS="$PIDS $PID_UI"
 
