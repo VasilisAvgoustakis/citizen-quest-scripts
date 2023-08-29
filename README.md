@@ -2,9 +2,9 @@
 
 These scripts are used to setup a station running the future-democracy exhibit.
 
-# Installation
+## Installation
 
-## Kiosk OS
+### Kiosk OS
 
 The target system for running the script is Ubuntu 22.04 provided that the following settings have been applied during installation:
 
@@ -17,7 +17,7 @@ The target system for running the script is Ubuntu 22.04 provided that the follo
 - Enroll the secure boot keys using the password you entered during secure boot configuration
 - Reboot into the system
 
-### Bootstrapping
+#### Bootstrapping
 
 The script `bin/bootstrap-os` will install required packages, the scripts in this repository as
 well as most of the exhibits:
@@ -30,7 +30,7 @@ sudo ./bootstrap-os
 
 Some changes made by the bootstrapping script might only take effect after a reboot.
 
-## Immutable file system
+### Immutable file system
 
 The bootstrapping script will ask if it should make the file system immutable after next reboot. This can be very useful to make the whole setup immune to crashes or other modifications of the system. So even if something goes severely wrong during operation, a reboot will usually solve all problems because it resets the system to a well defined state.
 
@@ -42,7 +42,7 @@ In immutable mode, changes to the local file system can be performed via the `ov
 
 Note that only the root partition is made immutable. It is still possible to write to partitions such as the configuration partition mounted to `/cfg`. 
 
-## Updating
+### Updating
 
 Important note: The scripts in this repository are designed for initial setup of the system. Using them for installing updates may or may not work reliably and some scripts will reset parts of the station configuration along the way. Running the scripts from within `overlayroot-chroot` may render the system unusable or even prevent successful booting. You have been warned.
 
@@ -50,31 +50,31 @@ That said: You can either re-run `bootstrap-os` or reinstall/update individual e
 `install-*` scripts. Note that in most cases, `install-kiosk-scripts` must be executed first
 to update the other installation scripts to the most recent version.
 
-## Uninstalling
+### Uninstalling
 
 It is out of the scope of these scripts to provide facilities for uninstalling.
 You have to check the installation scripts to figure out how to roll back an installation manually.
 
 Doing so might also be helpful in cases where installations or updates fail. Cleaning previous installations might fix certain issues.
 
-# Starting exhibits
+## Starting exhibits
 Exhibit start script names are prefixed with `exhibt-` followed by an identifier of that exhibit. See `bin/launch` for a list of known exhibits.
 
-# Restart exhibits after a crash
+## Restart exhibits after a crash
 The script `repeat-exhibit` will restart the executable supplied as argument indefinitely, e.g.
 ```
 repeat-exhibit exhibit-kiosk
 ```
 will restart `exhibit-kiosk` if it exits for whatever reason.
 
-# Stopping exhibits
+## Stopping exhibits
 All exhibits can be stopped via
 ```
 stop-exhibits
 ```
 This includes the `repeat-exhibit` script and any process whose name starts with `exhibit-`.
 
-# Autostart
+## Autostart
 
 By default, a plain X11 session is started that first runs an init script for the exhibit and then runs the exhibit in a loop with mouse cursor hiding enabled.
 
@@ -84,9 +84,9 @@ The system wide default for init and exhibit scripts are defined in `/etc/defaul
 User defined values can be provided in the file `$XDG_CONFIG_HOME/kiosk/default` following the same format as `/etc/default/kiosk`.
 If `$XDG_CONFIG_HOME` is not set, it's default value `~/.config` will be assumed.
 
-# Additional notes on some of the scripts
+## Additional notes on some of the scripts
 
-## Switching to a regular desktop session
+### Switching to a regular desktop session
 
 In the plain X11 session, there is not much the user can do besides using the running exhibit (which is intended). Basically, the only way to launch (graphical) applications is via one of the virtual terminals (e.g. <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>F2</kbd>) or via `ssh`.
 
@@ -96,11 +96,11 @@ stop-kiosk-session
 ```
 Note that the selected session will also be used after reboot if the filessystem isn't immutable. Hence, you should switch back to the plain X11 session once your work in the regular desktop session is done.
 
-## Hide the cursor
+### Hide the cursor
 The script `hidecursor` hides the cursor and starts another child process supplied as an argument.
 When the child exits, the cursor will not be hidden anymore.
 
-## Fake display resolution for testing
+### Fake display resolution for testing
 Sometimes the display used for development does not match the resolution used in production.
 Assume your test display has a default resolution of `1920x1080` (FullHD), but in production, `3840x2160` (UHD) is used.
 The command
