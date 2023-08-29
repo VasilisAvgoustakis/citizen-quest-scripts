@@ -44,7 +44,9 @@ Note that only the root partition is made immutable. It is still possible to wri
 
 ## Updating
 
-You can either re-run `bootstrap-os` or reinstall/update individual exhibits via the
+Important note: The scripts in this repository are designed for initial setup of the system. Using them for installing updates may or may not work reliably and some scripts will reset parts of the station configuration along the way. Running the scripts from within `overlayroot-chroot` may render the system unusable or even prevent successful booting. You have been warned.
+
+That said: You can either re-run `bootstrap-os` or reinstall/update individual exhibits via the
 `install-*` scripts. Note that in most cases, `install-kiosk-scripts` must be executed first
 to update the other installation scripts to the most recent version.
 
