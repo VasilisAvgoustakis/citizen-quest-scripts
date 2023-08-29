@@ -1,6 +1,8 @@
 # Future-Democracy scripts
 
-These scripts are used to setup a station running the future-democracy exhibit.
+These scripts are used to setup a station serving the future-democracy exhibit and displaying the main map.
+
+The client stations are still subject to manual setup. One possible setup is documented [below](#client-stations).
 
 ## Installation
 
@@ -110,3 +112,42 @@ fakeResolution 3840x2160
 will allocate a `3840x2160` frame buffer and will scale it down to `1920x1080`.
 
 If aspect ratios do not match, the image will be stretched.
+
+## Client stations
+
+### Hardware    
+
+ - Apple iPad 7th generation (A2197) with charging adapter and Lightning cable
+ - Lightning adapter for peripherals:
+    - Two adapter solution:
+        - Apple Lightning to USB 3 Camera Adapter (A1619)
+        - tp-link USB 3.0 3-Port Hub & Gigabit Ethernet Adapter (UE330)
+    - One adapter solution:
+        - XINCENG Lighting to Ethernet Adapter, 3 in 1 RJ45 Ethernet LAN Wired Network Adapter with Charging Port and USB 3.0 Port Adapter (THT-016-N)
+- EG STARTS USB Gamepad/Joystick Encoder (USB-001)
+- Arcade joystick and buttons, e.g.:
+    - IL Eurojoystick 2 Happ Arcade Joystick
+    - 2x Gold Leaf Silent Short Arcade & Pinball Button
+- Optional, but recommended: [Gamepad API activator](https://github.com/IMAGINARY/gamepad-api-activator)
+- RJ45 Ethernet cable
+
+### Software
+
+- iPadOS 16.6
+- [Kiosk Pro Plus](https://apps.apple.com/app/kiosk-pro-plus/id445701154)
+
+#### Kiosk configuration
+
+##### iPadOS
+ - Set up [guided access](https://support.apple.com/en-my/guide/ipad/ipada16d1374/ipados)
+ - Disable WiFi and Bluetooth
+ - Disable auto-lock
+ - Disable auto-brightness
+ - Disable auto-updates
+
+##### Kiosk Pro Plus
+ - Set the content URL to `http://[server-address-or-ip]/player.html?p=[player-id]`
+ - [Disable the navigation bar](https://support.kioskgroup.com/article/969-show-navigation-bar)
+ - [Disable zoom](https://support.kioskgroup.com/article/985-zoom-on-standard-web-pages)
+ - [Allow automatic focus](https://support.kioskgroup.com/article/1169-show-keyboard-automatically-on-focus-event)
+ - [Disable idle timer](https://support.kioskgroup.com/article/991-idle-time-limit)
