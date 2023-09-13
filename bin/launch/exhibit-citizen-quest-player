@@ -13,20 +13,20 @@ trap finish SIGINT SIGTERM EXIT
 # Options
 QUERY_STRING=""
 # Configure sentry.io data source name (dsn)
-if [ ! -z "${FUTURE_DEMOCRACY_PLAYER_SENTRY_DSN}" ]
+if [ ! -z "${CITIZEN_QUEST_PLAYER_SENTRY_DSN}" ]
 then
-  QUERY_STRING="${QUERY_STRING}&sentry-dsn=${FUTURE_DEMOCRACY_PLAYER_SENTRY_DSN}"
+  QUERY_STRING="${QUERY_STRING}&sentry-dsn=${CITIZEN_QUEST_PLAYER_SENTRY_DSN}"
 fi
 
 # Launch the exhibit in the background
 kiosk-browser $KIOSK_OPTS \
-    --app-name-suffix=future-democracy-player \
+    --app-name-suffix=citizen-quest-player \
     --remote-debugging-port 9222 \
     --kiosk \
     --fullscreen \
     --hide-scrollbars \
     --reload-unresponsive 60 \
-    --serve /opt/future-democracy/future-democracy \
+    --serve /opt/citizen-quest/citizen-quest \
     "player.html?${QUERY_STRING}" &
 PID_UI=$!
 PIDS="$PIDS $PID_UI"

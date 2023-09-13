@@ -11,17 +11,17 @@ function finish {
 trap finish SIGINT SIGTERM EXIT
 
 
-exhibit-future-democracy-api-server &
+exhibit-citizen-quest-api-server &
 PID_API_SERVER=$!
 PIDS="$PIDS $PID_API_SERVER"
 
-exhibit-future-democracy-http-server &
+exhibit-citizen-quest-http-server &
 PID_HTTP_SERVER=$!
 PIDS="$PIDS $PID_HTTP_SERVER"
 
 sleep 1
 
-exhibit-future-democracy-map &
+exhibit-citizen-quest-map &
 PID_CITY=$!
 PIDS="$PIDS $PID_CITY"
 

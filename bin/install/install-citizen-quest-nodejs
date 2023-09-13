@@ -17,7 +17,7 @@ apt install -yq --no-install-recommends \
 VERSION=v18.16.1
 DISTRO=linux-x64
 URL="https://nodejs.org/dist/${VERSION}/node-${VERSION}-${DISTRO}.tar.xz"
-UNPACK_DIR="/opt/future-democracy/nodejs"
+UNPACK_DIR="/opt/citizen-quest/nodejs"
 BIN_DIR="${UNPACK_DIR}/bin"
 
 INSTALLED_VERSION=$("${BIN_DIR}/node" --version || true)

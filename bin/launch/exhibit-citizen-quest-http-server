@@ -10,9 +10,9 @@ function finish {
 }
 trap finish SIGINT SIGTERM EXIT
 
-INSTALL_DIR="/opt/future-democracy/future-democracy/"
+INSTALL_DIR="/opt/citizen-quest/citizen-quest/"
 
-# Launch the future-mobility HTTP server
+# Launch the citizen-quest HTTP server
 cd "${INSTALL_DIR}" || exit 1
 python3 -m http.server 8080 &
 PID_SERVER="$!"

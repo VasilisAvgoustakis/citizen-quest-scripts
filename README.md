@@ -1,6 +1,6 @@
-# Future-Democracy scripts
+# Citizen-Quest scripts
 
-These scripts are used to setup a station serving the future-democracy exhibit and displaying the main map.
+These scripts are used to setup a station serving the citizen-quest exhibit and displaying the main map.
 
 The client stations are still subject to manual setup. One possible setup is documented [below](#client-stations).
 
@@ -25,7 +25,7 @@ The script `bin/bootstrap-os` will install required packages, the scripts in thi
 well as most of the exhibits:
 
 ```
-wget https://raw.githubusercontent.com/IMAGINARY/future-democracy-scripts/main/bin/bootstrap-os
+wget https://raw.githubusercontent.com/IMAGINARY/citizen-quest-scripts/main/bin/bootstrap-os
 chmod +x bootstrap-os
 sudo ./bootstrap-os
 ```

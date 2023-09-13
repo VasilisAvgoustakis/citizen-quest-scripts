@@ -72,14 +72,14 @@ bootstrap() {
     if [[ "$*" == *--confirm-rsync-overwrite* ]]; then
         INSTALL_KIOSK_SCRIPTS_ARGS+=( "--confirm-rsync-overwrite" )
     fi
-    curl -L https://raw.githubusercontent.com/IMAGINARY/future-democracy-scripts/main/bin/install/install-kiosk-scripts | bash -s -- "${INSTALL_KIOSK_SCRIPTS_ARGS[@]}"
+    curl -L https://raw.githubusercontent.com/IMAGINARY/citizen-quest-scripts/main/bin/install/install-kiosk-scripts | bash -s -- "${INSTALL_KIOSK_SCRIPTS_ARGS[@]}"
     source "/opt/kiosk-scripts/rootfs/etc/profile.d/kiosk-bin-path.sh"
 
     # Install dependencies common to many exhibits
     install-kiosk-browser
 
     # Install the exhibits
-    install-future-democracy
+    install-citizen-quest
 
     # Run the kiosk-config script
     ASK_TO_REBOOT=1 /opt/kiosk-scripts/bin/kiosk-config

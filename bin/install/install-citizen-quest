@@ -3,12 +3,12 @@
 set -e
 
 install-kiosk-browser
-install-future-democracy-nodejs
+install-citizen-quest-nodejs
 
-COMMITISH="v0.5.1"
-REPO_URL="https://github.com/IMAGINARY/future-democracy.git"
-INSTALL_DIR="/opt/future-democracy/future-democracy"
-NODEJS_BIN_DIR="/opt/future-democracy/nodejs/bin"
+COMMITISH="d39ced2fba02838ef299ab1af7b04377ee69488f"
+REPO_URL="https://github.com/IMAGINARY/citizen-quest.git"
+INSTALL_DIR="/opt/citizen-quest/citizen-quest"
+NODEJS_BIN_DIR="/opt/citizen-quest/nodejs/bin"
 export PATH="$NODEJS_BIN_DIR:$PATH"
 
 "${BASH_SOURCE%/*}/../internal/install-source-from-git" "$COMMITISH" "$REPO_URL" "$INSTALL_DIR"
