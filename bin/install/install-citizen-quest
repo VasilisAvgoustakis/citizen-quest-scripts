@@ -5,7 +5,7 @@ set -e
 install-kiosk-browser
 install-citizen-quest-nodejs
 
-COMMITISH="6e0a758ee3b99a72fa5f65c372da23e69d80a488"
+COMMITISH="v0.6.0"
 REPO_URL="https://github.com/IMAGINARY/citizen-quest.git"
 INSTALL_DIR="/opt/citizen-quest/citizen-quest"
 NODEJS_BIN_DIR="/opt/citizen-quest/nodejs/bin"
