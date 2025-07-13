@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Install "Citizen-Quest - Freiheit"
+set -e 
+
+# 0. Share run-time prerequisites (same as stock installer)
+install-kiosk-browser
+install-citizen-quest-nodejs  #optional since in /opt/citizen-quest/ where /citizen-quest-edsoc is cloned there's already a /nodejs installed
+
+# 1. Where to fetch and where to place source
+COMMITISH="main"  # or pin a SHA / tag if preferable
+REPO_URL="https://github.com/IMAGINARY/citizen-quest-freiheit.git"
+INSTALL_DIR="/opt/citizen-quest/citizen-quest-freiheit"
+
+# 2. Ensure Node binaries are on PATH
+export PATH="/opt/citizen-quest/nodejs/bin:$PATH"
+
+# 3. Clone / update the repo at the requested revision
+"/opt/kiosk-scripts/bin/internal/install-source-from-git" \
+  "$COMMITISH" "$REPO_URL" "$INSTALL_DIR"
+
+# 4. Build the exhibit 
+cd "$INSTALL_DIR"
+npm ci --omit=dev #faster & deterministic thatn npm install
+npm run build
+npm run install-server
+
+# 5. Done
+echo "Citizen-Quest FREIHEIT installled to $INSTALL_DIR"
+
