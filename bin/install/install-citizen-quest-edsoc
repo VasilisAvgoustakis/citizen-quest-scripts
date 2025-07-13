@@ -17,7 +17,7 @@ export PATH="/opt/citizen-quest/nodejs/bin:$PATH"
 
 # 3. Clone / update the repo at the requested revision
 "/opt/kiosk-scripts/bin/internal/install-source-from-git" \
-  "$COMMITTISH" "$REPO_URL" "$INSTALL_DIR"
+  "$COMMITISH" "$REPO_URL" "$INSTALL_DIR"
 
 # 4. Build the exhibit 
 cd "$INSTALL_DIR"
