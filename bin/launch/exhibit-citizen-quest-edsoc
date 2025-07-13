@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+export PATH="/opt/citizen-quest/nodejs/bin:/opt/kiosk-scripts/bin:$PATH
+
+cd /opt/citizen-quest/citizen-quest-edsoc/dist/server
+
+npm run start & SERVER_PID=$!
+
+sleep 3
+
+kiosk-browser $KIOSK_OPTS --app-name-suffix=cq-edsoc \
+    --kiosk --fullscreen --hide-scrollbars --reload-unresponsive 60 \
+    --serve /opt/citizen-quest/citizen-quest-edsoc/dist/map.html
+
+kill $SERVER_PID
+wait $SERVER_PID
