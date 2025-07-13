@@ -9,15 +9,15 @@ install-citizen-quest-nodejs  #optional since in /opt/citizen-quest/ where /citi
 
 # 1. Where to fetch and where to place source
 COMMITISH="main"  # or pin a SHA / tag if preferable
-REPO_URL="https://github.com/VasilisAvgoustakis/citizen-quest-edsoc.git"
+REPO_URL="https://github.com/IMAGINARY/citizen-quest-edsoc.git"
 INSTALL_DIR="/opt/citizen-quest/citizen-quest-edsoc"
 
 # 2. Ensure Node binaries are on PATH
-export PATH="/opt/citizen-quest/nodejs/bin::$PATH"
+export PATH="/opt/citizen-quest/nodejs/bin:$PATH"
 
 # 3. Clone / update the repo at the requested revision
-"${BASH_SOURCE%/*}/../internal/install-source-from-git" \
-  "$CIMMITTISH" "$REPO_URL" "$INSTALL_DIR"
+"/opt/kiosk-scripts/bin/internal/install-source-from-git" \
+  "$COMMITTISH" "$REPO_URL" "$INSTALL_DIR"
 
 # 4. Build the exhibit 
 cd "$INSTALL_DIR"
