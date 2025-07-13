@@ -11,7 +11,8 @@ sleep 3
 
 kiosk-browser $KIOSK_OPTS --app-name-suffix=cq-edsoc \
     --kiosk --fullscreen --hide-scrollbars --reload-unresponsive 60 \
-    --serve /opt/citizen-quest/citizen-quest-edsoc/dist/map.html
+    --serve /opt/citizen-quest/citizen-quest-edsoc/dist/ \
+    "map.html"
 
 kill $SERVER_PID
 wait $SERVER_PID
