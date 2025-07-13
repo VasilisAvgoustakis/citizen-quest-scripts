@@ -9,7 +9,7 @@ install-citizen-quest-nodejs  #optional since in /opt/citizen-quest/ where /citi
 
 # 1. Where to fetch and where to place source
 COMMITISH="main"  # or pin a SHA / tag if preferable
-REPO_URL="https://github.com/IMAGINARY/citizen-quest-edsoc.git"
+REPO_URL="https://github.com/VasilisAvgoustakis/citizen-quest-edsoc.git"
 INSTALL_DIR="/opt/citizen-quest/citizen-quest-edsoc"
 
 # 2. Ensure Node binaries are on PATH
